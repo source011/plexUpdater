@@ -13,7 +13,7 @@ printf "${RED}        ${NC} -created by source011- ${RED}        ${NC}\n"
 printf " \n"
 printf "        checking latest version ...\n"
 printf " \n"
-LATESTVERSION=$(curl -s -L https://forums.plex.tv/t/plex-media-server/30447/315 | grep 'Plex Media Server ' | tail -1 | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")
+LATESTVERSION=$(curl -s -L https://forums.plex.tv/t/plex-media-server/30447/315 | grep '<p><strong>Plex Media Server ' | tail -1 | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")
 printf "        latest version is: $LATESTVERSION \n"
 CURRENTVERSION=$(ps -ef | grep plex | grep server-version | tail -1 | egrep -o "([0-9]{1,}\.)+[0-9]{1,}")
 printf "        installed version is: $CURRENTVERSION \n"
