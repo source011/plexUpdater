@@ -39,7 +39,11 @@ printf " \n"
 printf " \n"
 printf "        PLEX INSTALLED SUCCESSFULLY! ...\n"
 printf " \n"
+TIMESTAMP=`date +%Y-%m-%d_%H:%M:%S`
+printf "[$TIMESTAMP] Updated Plex from $CURRENTVERSION to $LATESTVERSION!\n" >> /home/plex/upgradePlex.log
 else
 printf "        latest version is installed, nothing to do ...\n"
+TIMESTAMP=`date +%Y-%m-%d_%H:%M:%S`
+printf "[$TIMESTAMP] nothing todo...\n" >> /home/plex/upgradePlex.log
 fi;
 printf "${RED}==========${NC} Plex Upgrade Script ${RED}==========${NC}\n"
