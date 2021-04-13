@@ -2,7 +2,8 @@
 #========== V A R S ===============
 RED='\033[0;31m'
 NC='\033[0m' # No Color
-PLEXTOKEN="ADD-PLEX-TOKEN-HERE!"
+PLEXTOKEN="ADD-PLEX-TOKEN-HERE!" # How to find your plex token -> (https://support.plex.tv/articles/204059436-finding-an-authentication-token-x-plex-token/)
+HOMEFOLDER="/home/YOUR-USERNAME" # Change this in order to get the log working (No trailing slash)
 #==================================
 if [ "$EUID" -ne 0 ]
   then echo ">>> DID YOU FORGET SUDO? ;)"
@@ -40,10 +41,10 @@ printf " \n"
 printf "        PLEX INSTALLED SUCCESSFULLY! ...\n"
 printf " \n"
 TIMESTAMP=`date +%Y-%m-%d_%H:%M:%S`
-printf "[$TIMESTAMP] Updated Plex from $CURRENTVERSION to $LATESTVERSION!\n" >> /home/plex/upgradePlex.log
+printf "[$TIMESTAMP] Updated Plex from $CURRENTVERSION to $LATESTVERSION!\n" >> $HOMEFOLDER/upgradePlex.log
 else
 printf "        latest version is installed, nothing to do ...\n"
 TIMESTAMP=`date +%Y-%m-%d_%H:%M:%S`
-printf "[$TIMESTAMP] nothing todo...\n" >> /home/plex/upgradePlex.log
+printf "[$TIMESTAMP] nothing todo...\n" >> $HOMEFOLDER/upgradePlex.log
 fi;
 printf "${RED}==========${NC} Plex Upgrade Script ${RED}==========${NC}\n"
