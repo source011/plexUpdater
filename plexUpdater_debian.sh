@@ -45,6 +45,6 @@ printf "[$TIMESTAMP] Updated Plex from $CURRENTVERSION to $LATESTVERSION!\n" >> 
 else
 printf "        latest version is installed, nothing to do ...\n"
 TIMESTAMP=`date +%Y-%m-%d_%H:%M:%S`
-printf "[$TIMESTAMP] nothing todo...\n" >> $HOMEFOLDER/plexUpdater.log
+printf "[$TIMESTAMP] Nothing todo...\n" >> $HOMEFOLDER/plexUpdater.log
 fi;
 printf "${RED}==========${NC} Plex Upgrade Script ${RED}==========${NC}\n"
