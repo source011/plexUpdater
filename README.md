@@ -1,5 +1,5 @@
 # plexUpdater
-Simple upgrade script for Plex Media Server. This script is mainly for people **not** using Plex Pass.
+Simple upgrade script for Plex Media Server.
 
 **NOTE!** If using Plex Pass, remove **grep -v "Plex Pass"** from line 16.
 
