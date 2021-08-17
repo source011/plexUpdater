@@ -3,8 +3,6 @@ Simple upgrade script for Plex Media Server. This script is mainly for people **
 
 NOTE: If using Plex Pass: Remove **grep -v "Plex Pass"** from line 16.
 
-This script **requires** any of the following distros "**Fedora (27+)** / **CentOS (7+)** / **SUSE (15+)** - Intel/AMD 64-bit".
-
 **Change following variables**
 * PLEXTOKEN
 * HOMEFOLDER
