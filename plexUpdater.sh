@@ -9,6 +9,39 @@ if [ "$EUID" -ne 0 ]
   then echo ">>> DID YOU FORGET SUDO? ;)"
   exit
 fi
+
+#======== F U N C T I O N S =======
+get_plex () {
+  if command -v apt-get >/dev/null; then
+    wget -q -O plexmediaserver-$LATESTVERSION.deb "https://plex.tv/downloads/latest/5?channel=8&build=linux-x86_64&distro=debian&X-Plex-Token=$PLEXTOKEN" 2>&1 >/dev/null
+  elif command -v dnf >/dev/null; then
+    wget -q -O plexmediaserver-$LATESTVERSION.rpm "https://plex.tv/downloads/latest/5?channel=8&build=linux-x86_64&distro=redhat&X-Plex-Token=$PLEXTOKEN" 2>&1 >/dev/null
+  else
+    echo "I have no Idea what im doing here..."
+  fi
+}
+
+install_plex () {
+  if command -v apt-get >/dev/null; then
+    dpkg -i plexmediaserver-$LATESTVERSION.deb 2>&1 >/dev/null
+  elif command -v dnf >/dev/null; then
+    dnf install -y plexmediaserver-$LATESTVERSION.rpm 2>&1 >/dev/null
+  else
+    echo "I have no Idea what im doing here..."
+  fi
+}
+
+remove_plex () {
+  if command -v apt-get >/dev/null; then
+    rm -f plexmediaserver-$LATESTVERSION.deb 2>&1 >/dev/null
+  elif command -v dnf >/dev/null; then
+    rm -f plexmediaserver-$LATESTVERSION.rpm 2>&1 >/dev/null
+  else
+    echo "I have no Idea what im doing here..."
+  fi
+}
+#==================================
+
 printf "${RED}==========${NC} Plex Upgrade Script ${RED}==========${NC}\n"
 printf "${RED}        ${NC} -created by source011- ${RED}        ${NC}\n"
 printf " \n"
@@ -23,19 +56,19 @@ printf " \n"
 if [ $LATESTVERSION \> $CURRENTVERSION ];
 then
 printf "        downloading latest version ...\n"
-wget -q -O plexmediaserver-$LATESTVERSION.deb "https://plex.tv/downloads/latest/5?channel=8&build=linux-x86_64&distro=debian&X-Plex-Token=$PLEXTOKEN" 2>&1 >/dev/null
+get_plex
 printf " \n"
 printf "        stopping plex service ...\n"
 systemctl stop plexmediaserver.service 2>&1 >/dev/null
 printf " \n"
 printf "        installing latest version ...\n"
-dpkg -i plexmediaserver-$LATESTVERSION.deb 2>&1 >/dev/null
+install_plex
 printf " \n"
 printf "        starting plex service ...\n"
 systemctl start plexmediaserver.service 2>&1 >/dev/null
 printf " \n"
 printf "        deleting installer ...\n"
-rm -f plexmediaserver-$LATESTVERSION.deb 2>&1 >/dev/null
+remove_plex
 printf " \n"
 printf " \n"
 printf "        PLEX INSTALLED SUCCESSFULLY! ...\n"
