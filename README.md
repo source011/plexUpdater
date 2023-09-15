@@ -1,7 +1,7 @@
 # plexUpdater
 Simple upgrade script for Plex Media Server.
 
-**NOTE!** If using Plex Pass, remove **grep -v "Plex Pass"** from line 50.
+**NOTE!** If using Plex Pass, remove `grep -v "Plex Pass"` from line 50.
 
 **Change following variables**
 * PLEXTOKEN
